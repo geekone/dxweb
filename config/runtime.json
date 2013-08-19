@@ -1,0 +1,9 @@
+{
+    "db":{
+        "USER":"test",
+        "PASS":"",
+        "HOST":"localhost",
+        "PORT":"",
+        "DATABASE":"dxweb"
+    }
+}

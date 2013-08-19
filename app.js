@@ -1,29 +1,32 @@
-
-/**
- * Module dependencies.
- */
-
 var express = require('express')
-  , routes = require('./routes')
-  , admin = require('./routes/admin')
-  , user = require('./routes/user')
+   ,mongoose = require('mongoose')
+   ,partials = require('express-partials')
   , http = require('http')
-  , path = require('path');
+  , path = require('path')
+  , config = require('config')
+    ,utils = require('./lib/utils');
 
 var app = express();
 
+mongoose = utils.connectToDatabase(mongoose,config.db);
+
 // all environments
-app.set('port', process.env.PORT || 3000);
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
-app.use(express.favicon());
-app.use(express.logger('dev'));
-app.use(express.bodyParser());
-app.use(express.methodOverride());
-app.use(express.cookieParser('your secret here'));
-app.use(express.session());
-app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public')));
+
+app.configure('all', function () {
+    app.engine('html', require('ejs').renderFile);
+    app.set('port', process.env.PORT || 3000);
+    app.set('views', __dirname + '/views');
+    app.set('view engine', 'html');
+    app.use(express.favicon());
+    app.use(express.logger('dev'));
+    app.use(express.bodyParser());
+    app.use(express.methodOverride());
+    app.use(express.cookieParser('your secret here'));
+    app.use(express.session({secret: 'SEKRET!!!'}));
+    app.use(express.static(path.join(__dirname, 'public')));
+    app.use(partials());
+    app.use(app.router);
+});
 
 // development only
 if ('development' == app.get('env')) {
@@ -34,11 +37,10 @@ if ('development' == app.get('env')) {
 
 
 
-app.get('/', routes.index);
-app.get('/users', user.list);
-
-/********** admin route **************/
-app.get('/admin/',admin.index);
+// Register Controllers
+['Site', 'Admin'].forEach(function (controller) {
+    require('./controllers/' + controller + 'Controller')(app, mongoose, config);
+});
 
 
 

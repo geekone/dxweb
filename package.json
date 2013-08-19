@@ -7,6 +7,10 @@
   },
   "dependencies": {
     "express": "3.3.4",
-    "ejs": "*"
+      "mongoose":"*",
+      "ejs": "*",
+      "winston":"*",
+      "express-partials":"*",
+      "config":"*"
   }
 }
