@@ -8,7 +8,7 @@
 
 SiteContrller = function(app,mongoose,config) {
     app.get('/?',function(req,res,next){
-        res.render('index');
+        res.render('index',{'title':'首页'});
     });
 }
 

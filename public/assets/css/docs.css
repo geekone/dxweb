@@ -1,0 +1,80 @@
+
+
+
+/* padding for in-page bookmarks and fixed navbar */
+section {
+  padding-top: 30px;
+}
+section > .page-header,
+section > .lead {
+  color: #5a5a5a;
+}
+section > ul li {
+  margin-bottom: 5px;
+}
+
+/* Separators (hr) */
+.bs-docs-separator {
+  margin: 40px 0 39px;
+}
+
+.bs-docs-separator{
+    margin:40px 0 39px;
+}
+
+.bs-docs-sidenav{
+    width:228px;
+    margin: 30px 0 0;
+    padding:  0;
+    background-color: #fff;
+}
+
+.bs-docs-sidenav > li > a{
+    display:block;
+    width:190px;
+    border:1px soild #e5e5e5;
+}
+
+.bs-docs-sidenav .icon-chevron-right {
+  float: left;
+  margin-top: 2px;
+
+  opacity: .25;
+}
+.bs-docs-sidenav > li > a:hover {
+  background-color: #f5f5f5;
+}
+.bs-docs-sidenav a:hover .icon-chevron-right {
+  opacity: .5;
+}
+
+
+.muted {
+    color: #999999;
+}
+a.muted:hover, a.muted:focus {
+    color: #808080;
+}
+
+
+.footer {
+    background-color: #F5F5F5;
+    border-top: 1px solid #E5E5E5;
+    margin-top: 70px;
+    padding: 30px 0;
+    text-align: center;
+}
+.footer p {
+    color: #777777;
+    margin-bottom: 0;
+}
+.footer-links {
+    margin: 10px 0;
+}
+.footer-links li {
+    display: inline;
+    padding: 0 2px;
+}
+.footer-links li:first-child {
+    padding-left: 0;
+}

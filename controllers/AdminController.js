@@ -11,7 +11,7 @@ var util = require('util');
 AdminContrller = function(app,mongoose,config) {
     app.get('/admin/?',function(req,res,next){
         util.log(req.method + " request to url :" + req.route.path);
-        res.render("admin/index");
+        res.render("admin/index",{layout:'admin/layout'});
     });
 
 }
