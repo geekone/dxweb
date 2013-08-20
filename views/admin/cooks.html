@@ -1,0 +1,20 @@
+<ul class="breadcrumb">
+    <li><a href="#">首页</a> <span class="divider">/</span></li>
+    <li><a href="#">COOK</a> <span class="divider">/</span></li>
+    <li class="active"><%=title%></li>
+</ul>
+<p><a href="/admin/addcook">添加</a></p>
+<table class="table table-bordered">
+    <tr>
+        <th>title</th><th>管理</th>
+    </tr>
+    <% cooks.forEach(function(cook){ %>
+    <tr>
+        <td><%=cook.title %></td>
+        <td><a href="<%=cook._id %>">del</a></td>
+    </tr>
+    <% }) %>
+</table>
+
+
+

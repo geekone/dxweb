@@ -1,23 +1,21 @@
 /**
  * Created with JetBrains WebStorm.
  * User: Administrator
- * Date: 13-8-19
- * Time: 下午5:23
- * 新闻模型
+ * Date: 13-8-20
+ * Time: 下午3:46
+ * To change this template use File | Settings | File Templates.
  */
 
 module.exports = function(mongoose){
-
-    var Schema = mongoose.Schema,
-
-    News = new Schema({
+    Schema = mongoose.Schema;
+    Cook = new Schema({
         title:{
             type:String
         },
         content:{
             type:String
         },
-        author:{
+        auther:{
             type:String
         },
         created:{
@@ -26,5 +24,5 @@ module.exports = function(mongoose){
         }
     });
 
-    return mongoose.model('News',News);
+    return mongoose.model('Cook',Cook);
 }

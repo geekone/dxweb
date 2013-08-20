@@ -1,0 +1,20 @@
+<ul class="breadcrumb">
+    <li><a href="#">首页</a> <span class="divider">/</span></li>
+    <li><a href="#">BLOG</a> <span class="divider">/</span></li>
+    <li class="active"><%=title%></li>
+</ul>
+ <p><a href="/admin/addblog">添加</a></p>
+<table class="table table-bordered">
+    <tr>
+        <th>title</th><th>管理</th>
+    </tr>
+    <% blogs.forEach(function(blog){ %>
+    <tr>
+        <td><%=blog.title %></td>
+        <td><a href="<%=blog._id %>">del</a></td>
+    </tr>
+    <% }) %>
+</table>
+
+
+

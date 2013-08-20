@@ -34,11 +34,15 @@ if ('development' == app.get('env')) {
 }
 
 
-
+require('./models/Blog')(mongoose);
+require('./models/News')(mongoose);
+require('./models/NewsCategory')(mongoose);
+require('./models/Cook')(mongoose);
+require('./models/CookCategory')(mongoose);
 
 
 // Register Controllers
-['Site', 'Admin'].forEach(function (controller) {
+['Site', 'Admin','Blog'].forEach(function (controller) {
     require('./controllers/' + controller + 'Controller')(app, mongoose, config);
 });
 

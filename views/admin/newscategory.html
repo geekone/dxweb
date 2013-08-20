@@ -1,0 +1,31 @@
+<ul class="breadcrumb">
+    <li><a href="#">首页</a> <span class="divider">/</span></li>
+    <li><a href="#">新闻</a> <span class="divider">/</span></li>
+    <li class="active"><%=title%></li>
+</ul>
+<table class="table table-bordered">
+    <tr>
+        <th>Name</th><th>管理</th>
+    </tr>
+    <% newsCategories.forEach(function(category){ %>
+    <tr>
+        <td><%=category.name %></td>
+        <td><a href="<%=category._id %>">del</a></td>
+    </tr>
+    <% }) %>
+</table>
+
+<form class="form-horizontal" method="post" action="/admin/newscategorycreate">
+    <div class="control-group">
+        <label class="control-label" for="name">分类名称:</label>
+        <div class="controls">
+            <input type="text" id="name" name="name" placeholder="分类名称">
+        </div>
+    </div>
+    <div class="control-group">
+        <div class="controls">
+
+            <button type="submit" class="btn">保存</button>
+        </div>
+    </div>
+</form>
