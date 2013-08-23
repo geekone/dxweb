@@ -11,7 +11,7 @@
     <% cooks.forEach(function(cook){ %>
     <tr>
         <td><%=cook.title %></td>
-        <td><a href="<%=cook._id %>">del</a></td>
+        <td><a href="/admin/delcook/<%=cook._id %>">del</a></td>
     </tr>
     <% }) %>
 </table>

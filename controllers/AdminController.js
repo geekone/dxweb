@@ -24,7 +24,9 @@ AdminContrller = function(app,mongoose,config) {
     });
 
 
-    /*          分类      */
+    /* cook  */
+
+    //分类列表
     app.get('/admin/cookcategory/?',function(req,res,next){
         var query = CookCategory.find({});
         query.execFind(function(err,cookCategories){
@@ -40,6 +42,8 @@ AdminContrller = function(app,mongoose,config) {
         });
     });
 
+
+    //添加分类
     app.post('/admin/cookcategorycreate/?',function(req,res,next){
             var name = req.body.name;
             var cookCategoryModel = new CookCategory();
@@ -53,6 +57,20 @@ AdminContrller = function(app,mongoose,config) {
             });
     });
 
+    //删除分类
+    app.get('/admin/delcookcategory/:id',function(req,res,next){
+        CookCategory.findOne({_id:req.params.id},function(err,category){
+            if(category){
+                category.remove();
+                res.redirect("/admin/cookcategory/");
+            }else{
+                console.log(err);
+            }
+        });
+    });
+
+
+    //COOK列表
     app.get('/admin/cook/?',function(req,res,next){
         var query = Cook.find({});
         query.execFind(function(err,cooks){
@@ -68,6 +86,7 @@ AdminContrller = function(app,mongoose,config) {
         });
     });
 
+    //跳转添加COOK页面
     app.get('/admin/addcook/?',function(req,res,next){
            res.render('admin/addcook',{
                layout:'admin/layout',
@@ -75,6 +94,7 @@ AdminContrller = function(app,mongoose,config) {
            });
     });
 
+    //添加COOK
     app.post('/admin/cookcreate/?',function(req,res,next){
            var title = req.body.title;
            var content = req.body.content;
@@ -94,6 +114,17 @@ AdminContrller = function(app,mongoose,config) {
            });
     });
 
+    //删除cook
+    app.get('/admin/delcook/:id',function(req,res,next){
+        Cook.findById(req.params.id,function(err,cook){
+            if(cook){
+                cook.remove();
+                res.redirect("/admin/cook/");
+            }else{
+                console.log(err);
+            }
+        });
+    });
 
  /*  blog  */
 
@@ -130,6 +161,19 @@ AdminContrller = function(app,mongoose,config) {
             }
         });
     });
+
+    //删除分类
+    app.get('/admin/delblogcategory/:id',function(req,res,next){
+        BlogCategory.findById(req.params.id,function(err,category){
+            if(category){
+                category.remove();
+                res.redirect("/admin/blogcategory/");
+            }else{
+                console.log(err);
+            }
+        });
+    });
+
 
     //BLOG 文章
     app.get('/admin/blog/?',function(req,res,next){
@@ -176,6 +220,19 @@ AdminContrller = function(app,mongoose,config) {
                 }
             });
 
+    });
+
+
+    //删除文件
+    app.get('/admin/delblog/:id',function(req,res,next){
+        Blog.findById(req.params.id,function(err,blog){
+            if(blog){
+                blog.remove();
+                res.redirect("/admin/blog/");
+            }else{
+                console.log(err);
+            }
+        });
     });
 
 

@@ -11,7 +11,7 @@
     <% blogs.forEach(function(blog){ %>
     <tr>
         <td><%=blog.title %></td>
-        <td><a href="<%=blog._id %>">del</a></td>
+        <td><a href="/admin/delblog/<%=blog._id %>">del</a></td>
     </tr>
     <% }) %>
 </table>

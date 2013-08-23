@@ -1,0 +1,2 @@
+取的IP地址
+var ip = req.header('x-forwarded-for') || req.connection.remoteAddress;
