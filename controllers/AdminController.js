@@ -138,7 +138,8 @@ AdminContrller = function(app,mongoose,config) {
                 res.render('admin/blogcategory',{
                     layout:'admin/layout',
                     'title':'BLOG分类',
-                    'blogCategories':blogCategories
+                    'blogCategories':blogCategories,
+                    error:false
                 })
             }
         });
@@ -151,9 +152,12 @@ AdminContrller = function(app,mongoose,config) {
         blogCategoryModel.name = name;
         blogCategoryModel.save(function(err){
             if(err){
-                res.status(500);
-                res.render('blog-new',{
+                console.log(util.inspect(err));
+//                res.status(500);
+                res.render('admin/blogcategory',{
+                    layout:'admin/layout',
                     title:"Create new blog post",
+                    'blogCategories':[],
                     error:"Blog create failed" + util.inspect(err)
                 });
             }else{
@@ -283,6 +287,19 @@ AdminContrller = function(app,mongoose,config) {
         });
     });
 
+    //删除分类
+    app.get('/admin/delnewscategory/:id',function(req,res,next){
+        NewsCategory.findById(req.params.id,function(err,category){
+            if(category){
+                category.remove();
+                res.redirect('/admin/newscategory/');
+            }else{
+                console.log(err);
+            }
+        });
+    });
+
+
     app.get('/admin/addnews/?',function(req,res,next){
         res.render('admin/addnews',{layout:'admin/layout','title':'添加新闻'});
     });
@@ -305,6 +322,20 @@ AdminContrller = function(app,mongoose,config) {
             }
         });
     });
+
+   //删除NEWS
+   app.get('/admin/delnews/:id',function(req,res,next){
+       News.findById(req.params.id,function(err,news){
+           if(news){
+               news.remove();
+               res.redirect("/admin/news/");
+           }else{
+               console.log(err);
+           }
+       });
+   });
+
+
 }
 
 

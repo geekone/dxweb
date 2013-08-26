@@ -11,7 +11,7 @@
     <% newses.forEach(function(news){ %>
     <tr>
         <td><%=news.title %></td>
-        <td><a href="<%=news._id %>">del</a></td>
+        <td><a href="/admin/delnews/<%=news._id %>">del</a></td>
     </tr>
     <% }) %>
 </table>

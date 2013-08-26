@@ -16,6 +16,10 @@
     <% }) %>
  </table>
 
+<% if(error){ %>
+    <%= error %>
+<% } %>
+
 
 <form class="form-horizontal" method="post" action="/admin/blogcategorycreate">
     <div class="control-group">

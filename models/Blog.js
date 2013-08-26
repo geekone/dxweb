@@ -11,9 +11,24 @@ module.exports = function(mongoose){
 
     Schema = mongoose.Schema;
 
+    Comment = new Schema({
+        text:{
+            type:String
+        },
+        author:{
+            type:String
+        },
+        created:{
+            type:String,
+            required:false,
+            default:Date.now()
+        }
+    });
+
     BlogCategory = new Schema({
         name:{
-            type:String
+            type:String,
+            required:true
         }
     });
 

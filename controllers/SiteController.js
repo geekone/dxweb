@@ -10,6 +10,10 @@ SiteContrller = function(app,mongoose,config) {
     app.get('/?',function(req,res,next){
         res.render('index',{'title':'首页'});
     });
+
+    app.get('/500/?', function(req, res, next) {
+        next(new Error('Technical error occured'));
+    });
 }
 
 module.exports = SiteContrller;
